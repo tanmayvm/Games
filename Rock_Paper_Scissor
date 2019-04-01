@@ -1,0 +1,47 @@
+import random
+
+def rps_game(user_win, comp_win):
+    list_input = ["rock", "paper", "scissor"]
+    while True:
+        u_input = input('rock or paper or scissor?').lower()
+        if u_input in list_input:
+            m_input = random.choice(list_input)
+            print("Computer:" + m_input)
+            win = win_condition(u_input, m_input)
+            if win == "User Wins":
+                user_win += 1
+            elif win == "Computer Wins":
+                comp_win += 1
+            print(win)
+            print("User Win %s and Computer Win %s" % (user_win, comp_win))
+            print("--------------------------------")
+        else:
+            print("please input correct choice.")
+            print("--------------------------------")
+
+
+def win_condition(u_input, m_input):
+    if u_input == "rock" and m_input == "scissor":
+        return "User Wins"
+    elif u_input == "paper" and m_input == "rock":
+        return "User Wins"
+    elif u_input == "scissor" and m_input == "paper":
+        return "User Wins"
+    elif m_input == "rock" and u_input == "scissor":
+        return "Computer Wins"
+    elif m_input == "paper" and u_input == "rock":
+        return "Computer Wins"
+    elif m_input == "scissor" and u_input == "paper":
+        return "Computer Wins"
+    else:
+        return "Tie"
+
+
+def main():
+    user_win = 0
+    comp_win = 0
+    rps_game(user_win, comp_win)
+
+
+if __name__ == "__main__":
+    main()
